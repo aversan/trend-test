@@ -1,0 +1,204 @@
+$input-padding-y =6px
+$input-padding-x =12px
+$font-size = 13px
+$line-height = 1.75
+$input-color = #000
+$input-bg = #fff
+$input-btn-border-width = 1px
+$input-border-color = #c1c1c0
+$input-border-focus = #8e24aa
+$input-border-radius = 0
+$input-box-shadow = none
+$input-box-shadow-focus = 0 0 11px alpha($input-border-focus, 0.6)
+$input-color-placeholder = #6d6d6d
+$input-bg-disabled = #f9fafb
+$dropdwn-item-hover = lighten(#8e24aa, 10%)
+
+html
+body
+	width 100%
+	height 100%
+	background-color #fff
+
+.form-control
+	display block
+	width 100%
+	background-image none
+	border 1px solid grey
+	transition border-color ease-in-out .15s, box-shadow ease-in-out .15s
+	box-sizing border-box
+
+	&:focus
+		outline 0
+
+	&::-moz-placeholder
+		opacity 1
+
+	&::-ms-expand
+		background-color transparent
+		border 0
+
+	&[disabled]
+	&[readonly]
+	fieldset[disabled] &
+		opacity 1
+
+	&[disabled]
+	fieldset[disabled] &
+		cursor not-allowed
+
+
+// Theme
+
+.form-control
+	padding $input-padding-y $input-padding-x
+	font-size $font-size
+	line-height $line-height
+	color $input-color
+	background-color $input-bg
+	border-width $input-btn-border-width
+	border-color $input-border-color
+	border-radius $input-border-radius
+	box-shadow $input-box-shadow
+
+	&:focus
+		border-color $input-border-focus
+		box-shadow $input-box-shadow-focus
+
+	&::-moz-placeholder
+		color $input-color-placeholder
+
+	&:-ms-input-placeholder
+		color $input-color-placeholder
+
+	&::-webkit-input-placeholder
+		color $input-color-placeholder
+
+	&.placeholdersjs
+		color $input-color-placeholder
+
+	&[disabled]
+	&[readonly]
+	fieldset[disabled] &
+		background-color $input-bg-disabled
+
+	textarea&
+		height auto
+
+
+.select3
+	position relative
+	display inline-block
+
+	&__toggle
+		display inline-block
+		position relative
+		min-width 235px
+		cursor pointer
+
+		& > *
+			cursor pointer
+
+	&__toggle-inner
+		padding-left 15px
+		padding-right 35px
+		font-size 13px
+		line-height 50px
+		color $input-color-placeholder
+
+	&__caret
+		position absolute
+		right 0
+		top 0
+		bottom 0
+		width 35px
+
+		&:before
+			position absolute
+			content ''
+			display block
+			width 15px
+			height 8px
+			left 50%
+			top 50%
+			margin-left -7px
+			margin-top -4px
+			background-image url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA8AAAAICAYAAAAm06XyAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAGZJREFUeNpinDNnzjoGBoYpQLyPgXjgBMQ5TFCNq6ECxGoEqZ/CBLUxiEgDYBpDQfqYoIIHiTAApjEI5kUmJEl8BiBrPAgTZEJThM0ArBqxaUY3oBSXRhBgweE/mAHzcWkEAYAAAwDngR5Gl3kJegAAAABJRU5ErkJggg==')
+
+			.select3.is-open &
+				transform rotate(180deg)
+
+	&__dropdown
+		background-color #fff
+		color #000
+		padding 10px 20px
+		position absolute
+		left 0
+		top 100%
+		display none
+
+		.select3.is-open &
+			display block
+
+	&__dropdown-row
+		display flex
+		flex-direction row
+		align-items flex-start
+		flex-wrap nowrap
+
+	&__dropdown-col
+		width 120px
+
+	&__dropdown-col-sep
+		display block
+		width 20px
+		text-align center
+		color #4c4c4c
+		height $input-height
+		padding $input-padding-y 0
+		font-size $font-size
+		line-height $line-height
+
+		&:before
+			content '—'
+
+	&__dropdown-item
+		height $input-height
+		padding $input-padding-y $input-padding-x
+		font-size $font-size
+		line-height $line-height
+		color #000
+		background-color transparent
+		border-width $input-btn-border-width
+		border-color transparent
+		border-radius $input-border-radius
+		cursor pointer
+
+		&:hover
+		&:focus
+			border-color $dropdwn-item-hover
+			background-color $dropdwn-item-hover
+			color #fff
+
+		&.active
+		&.active:hover
+		&.active:focus
+			border-color #f4f4f4
+			background-color #f4f4f4
+			color #000
+
+		&.active
+			cursor default
+
+		.select3.is-empty-from .select3__input-to ~ &
+		&.disabled
+			pointer-events none
+			cursor default
+			opacity .2
+
+		.select3.is-focus-from .select3__input-from ~ &
+		.select3.is-focus-to .select3__input-to ~ &
+			pointer-events auto
+			cursor pointer
+			opacity 1
+
